@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidEnigma</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>
