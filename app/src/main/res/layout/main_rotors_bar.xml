@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/rotor_1_label"
+        style="@style/RotorBarLabel"
+        android:text="I"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rotor_2_label"
+        app:layout_constraintTop_toTopOf="@+id/rotor_2_label" />
+
+    <TextView
+        android:id="@+id/rotor_2_label"
+        style="@style/RotorBarLabel"
+        android:text="II"
+        app:layout_constraintEnd_toStartOf="@+id/rotor_1_label"
+        app:layout_constraintStart_toEndOf="@+id/rotor_3_label"
+        app:layout_constraintTop_toTopOf="@+id/rotor_3_label" />
+
+    <TextView
+        android:id="@+id/rotor_3_label"
+        style="@style/RotorBarLabel"
+        android:text="III"
+        app:layout_constraintEnd_toStartOf="@+id/rotor_2_label"
+        app:layout_constraintStart_toEndOf="@+id/reflector_label"
+        app:layout_constraintTop_toTopOf="@+id/reflector_label" />
+
+    <TextView
+        android:id="@+id/reflector_label"
+        style="@style/RotorBarLabel"
+        android:text="R"
+        app:layout_constraintEnd_toStartOf="@+id/rotor_3_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--
+    ************************************************************************************************
+    -->
+
+    <Spinner
+        android:id="@+id/reflector_choice_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/reflector_label"
+        app:layout_constraintStart_toStartOf="@id/reflector_label"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_3_choice_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/reflector_choice_spinner"
+        app:layout_constraintStart_toEndOf="@id/reflector_choice_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <!--
+    <Spinner
+        android:id="@+id/reflector_choice_spinner"
+        style="@style/RotorBarLabel"
+        app:layout_constraintEnd_toStartOf="@id/rotor_3_choice_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reflector_label"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_3_choice_spinner"
+        style="@style/RotorBarLabel"
+        app:layout_constraintEnd_toStartOf="@id/rotor_2_choice_spinner"
+        app:layout_constraintStart_toEndOf="@id/reflector_choice_spinner"
+        app:layout_constraintTop_toTopOf="@+id/reflector_choice_spinner"
+        tools:layout_editor_absoluteX="106dp" />
+
+    <Spinner
+        android:id="@+id/rotor_2_choice_spinner"
+        style="@style/RotorBarLabel"
+        app:layout_constraintEnd_toStartOf="@id/rotor_1_choice_spinner"
+        app:layout_constraintStart_toEndOf="@id/rotor_3_choice_spinner"
+        app:layout_constraintTop_toTopOf="@+id/rotor_3_choice_spinner"
+        tools:layout_editor_absoluteX="156dp" />
+
+    <Spinner
+        android:id="@+id/rotor_1_choice_spinner"
+        style="@style/RotorBarLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rotor_2_choice_spinner"
+        app:layout_constraintTop_toTopOf="@+id/rotor_2_choice_spinner"
+        tools:layout_editor_absoluteX="206dp" />
+        -->
+</androidx.constraintlayout.widget.ConstraintLayout>

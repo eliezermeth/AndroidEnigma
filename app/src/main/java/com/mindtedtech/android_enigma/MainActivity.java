@@ -12,6 +12,8 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setupToolbars();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -53,4 +56,38 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void setupToolbars()
+    {
+
+        Spinner spinner = findViewById(R.id.reflector_choice_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, Throwaway.REFLECTOR_NAMES);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner = findViewById(R.id.rotor_3_choice_spinner);
+        adapter = new ArrayAdapter<>(this, R.layout.spinner_item, Throwaway.ROTOR_NAMES);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        /*
+        // find the spinner from the xml
+        Spinner spinner = findViewById(R.id.reflector_choice_spinner);
+        // create an adapter to describe how the items are displayed
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Throwaway.REFLECTOR_NAMES);
+        // set the spinners adapter to the previously created one
+        spinner.setAdapter(adapter);
+
+        spinner = findViewById(R.id.rotor_3_choice_spinner);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Throwaway.ROTOR_NAMES);
+        spinner.setAdapter(adapter);
+
+        spinner = findViewById(R.id.rotor_2_choice_spinner);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Throwaway.ROTOR_NAMES);
+        spinner.setAdapter(adapter);
+
+        spinner = findViewById(R.id.rotor_1_choice_spinner);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Throwaway.ROTOR_NAMES);
+        spinner.setAdapter(adapter);
+    */}
 }
