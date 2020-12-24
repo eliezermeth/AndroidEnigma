@@ -59,27 +59,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void setupToolbars()
     {
+        // create reflector
+        setupCustomSpinner(R.id.reflector_choice_spinner, Throwaway.REFLECTOR_NAMES);
+
+        // create rotors
+        int[] rotorIDs = { R.id.rotor_3_choice_spinner, R.id.rotor_2_choice_spinner, R.id.rotor_1_choice_spinner };
+        for (int id : rotorIDs)
+        {
+            setupCustomSpinner(id, Throwaway.ROTOR_NAMES);
+        }
+    }
+
+    public void setupCustomSpinner(int spinnerID, String[] contents)
+    {
         // find the spinner from the xml
-        Spinner spinner = findViewById(R.id.reflector_choice_spinner);
+        Spinner spinner = findViewById(spinnerID);
         // create an adapter to describe how the items are displayed
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, Throwaway.REFLECTOR_NAMES);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, contents);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         // set the spinners adapter to the previously created one
-        spinner.setAdapter(adapter);
-
-        spinner = findViewById(R.id.rotor_3_choice_spinner);
-        adapter = new ArrayAdapter<>(this, R.layout.spinner_item, Throwaway.ROTOR_NAMES);
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        spinner = findViewById(R.id.rotor_2_choice_spinner);
-        adapter = new ArrayAdapter<>(this, R.layout.spinner_item, Throwaway.ROTOR_NAMES);
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        spinner = findViewById(R.id.rotor_1_choice_spinner);
-        adapter = new ArrayAdapter<>(this, R.layout.spinner_item, Throwaway.ROTOR_NAMES);
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
 }
