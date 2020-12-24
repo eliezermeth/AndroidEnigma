@@ -77,38 +77,4 @@
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="124dp" />
 
-    <!--
-    <Spinner
-        android:id="@+id/reflector_choice_spinner"
-        style="@style/RotorBarLabel"
-        app:layout_constraintEnd_toStartOf="@id/rotor_3_choice_spinner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reflector_label"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="124dp" />
-
-    <Spinner
-        android:id="@+id/rotor_3_choice_spinner"
-        style="@style/RotorBarLabel"
-        app:layout_constraintEnd_toStartOf="@id/rotor_2_choice_spinner"
-        app:layout_constraintStart_toEndOf="@id/reflector_choice_spinner"
-        app:layout_constraintTop_toTopOf="@+id/reflector_choice_spinner"
-        tools:layout_editor_absoluteX="106dp" />
-
-    <Spinner
-        android:id="@+id/rotor_2_choice_spinner"
-        style="@style/RotorBarLabel"
-        app:layout_constraintEnd_toStartOf="@id/rotor_1_choice_spinner"
-        app:layout_constraintStart_toEndOf="@id/rotor_3_choice_spinner"
-        app:layout_constraintTop_toTopOf="@+id/rotor_3_choice_spinner"
-        tools:layout_editor_absoluteX="156dp" />
-
-    <Spinner
-        android:id="@+id/rotor_1_choice_spinner"
-        style="@style/RotorBarLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/rotor_2_choice_spinner"
-        app:layout_constraintTop_toTopOf="@+id/rotor_2_choice_spinner"
-        tools:layout_editor_absoluteX="206dp" />
-        -->
 </androidx.constraintlayout.widget.ConstraintLayout>
