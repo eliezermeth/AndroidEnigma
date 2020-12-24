@@ -8,4 +8,17 @@
         <item name="layout_constraintHorizontal_chainStyle">packed</item>
         <item name="layout_constraintHorizontal_bias">0.5</item>
     </style>
+
+    <style name="PlugboardEditText">
+        <item name="layout_constraintHorizontal_chainStyle">spread</item>
+        <item name="layout_constraintHorizontal_bias">0.5</item>
+        <item name="android:background">@layout/edit_text_border</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:inputType">textCapCharacters</item>
+        <item name="android:maxLength">2</item>
+        <item name="android:hint">AE</item>
+    </style>
+
 </resources>
