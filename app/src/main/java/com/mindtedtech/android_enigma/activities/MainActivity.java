@@ -1,9 +1,11 @@
-package com.mindtedtech.android_enigma;
+package com.mindtedtech.android_enigma.activities;
 
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.mindtedtech.android_enigma.R;
+import com.mindtedtech.android_enigma.model.Throwaway;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
