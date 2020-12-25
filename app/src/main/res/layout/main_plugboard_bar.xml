@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    Label
+    -->
+    <TextView
+        android:id="@+id/plugboard_label"
+        android:layout_width="@dimen/plugboard_label_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#00FF00"
+        android:gravity="center_horizontal"
+        android:text="Plugboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rotor_3_setting_spinner" />
+
+    <!--
+    Connections
+    -->
+    <EditText
+        android:id="@+id/plugboard_1"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@+id/plugboard_2"
+        app:layout_constraintStart_toStartOf="@id/plugboard_label"
+        app:layout_constraintTop_toBottomOf="@id/plugboard_label" />
+
+    <EditText
+        android:id="@+id/plugboard_2"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_3"
+        app:layout_constraintStart_toEndOf="@id/plugboard_1"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_3"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_4"
+        app:layout_constraintStart_toEndOf="@id/plugboard_2"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_4"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_5"
+        app:layout_constraintStart_toEndOf="@id/plugboard_3"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_5"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_6"
+        app:layout_constraintStart_toEndOf="@id/plugboard_4"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_6"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_7"
+        app:layout_constraintStart_toEndOf="@id/plugboard_5"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_7"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_8"
+        app:layout_constraintStart_toEndOf="@id/plugboard_6"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_8"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_9"
+        app:layout_constraintStart_toEndOf="@id/plugboard_7"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_9"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_10"
+        app:layout_constraintStart_toEndOf="@id/plugboard_8"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_10"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_11"
+        app:layout_constraintStart_toEndOf="@id/plugboard_9"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_11"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_12"
+        app:layout_constraintStart_toEndOf="@id/plugboard_10"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_12"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toStartOf="@id/plugboard_13"
+        app:layout_constraintStart_toEndOf="@id/plugboard_11"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+    <EditText
+        android:id="@+id/plugboard_13"
+        style="@style/PlugboardEditText"
+        app:layout_constraintEnd_toEndOf="@id/plugboard_label"
+        app:layout_constraintStart_toEndOf="@id/plugboard_12"
+        app:layout_constraintTop_toTopOf="@id/plugboard_1" />
+
+
+</merge>
