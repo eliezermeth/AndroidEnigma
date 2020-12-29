@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:showIn="@layout/content_main">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/main_rotors_bar" />
+
+    <include layout="@layout/main_plugboard_bar" />
+
+    <include layout="@layout/main_input_text" />
+</merge>
