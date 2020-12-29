@@ -1,0 +1,3 @@
+[submodule "HistoricEnigma"]
+	path = HistoricEnigma
+	url = https://github.com/eliezermeth/HistoricEnigma.git
