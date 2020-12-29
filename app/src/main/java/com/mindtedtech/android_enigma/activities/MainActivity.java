@@ -3,6 +3,7 @@ package com.mindtedtech.android_enigma.activities;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.mindtedtech.android_enigma.R;
@@ -16,9 +17,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -32,16 +37,35 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         setupToolbars();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setupFAB();
+    }
+
+    private void setupFAB() {
+        ExtendedFloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(view -> FABClickAction());
+    }
+
+    // testing the input and output
+    private void FABClickAction(){
+        EditText inputText = findViewById(R.id.input_text);
+        String saveText = inputText.getText().toString();
+        String scrambled = scrambleWord(saveText);
+        TextView outputText = (TextView) findViewById(R.id.output_text);
+        outputText.setText(scrambled);
+    }
+
+    // Simple method as part of just quickly scrambling the input text and displaying the output
+    private String scrambleWord(String word){
+        ArrayList<Character> chars = new ArrayList<Character>(word.length());
+        for (char c : word.toCharArray()){
+            chars.add(c);
+        }
+        Collections.shuffle(chars);
+        char[] scrambled = new char[chars.size()];
+        for (int i = 0; i < scrambled.length; i++){
+            scrambled[i] = chars.get(i);
+        }
+        return new String(scrambled);
     }
 
     @Override
