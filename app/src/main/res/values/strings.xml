@@ -6,6 +6,8 @@
     <string name="version">Version</string>
     <string name="about">About</string>
     <string name="previous_options">Previous Options</string>
+    <string name="enigma_I">Enigma I</string>
+    <string name="enigma_m3">Enigma M3</string>
 
 
 </resources>

@@ -87,8 +87,14 @@ public class MainActivity extends AppCompatActivity
                 showPreviousOptions();
                 return true;
             }
-            case R.id.action_enigma_version: {
-                chooseEnigmaVersion();
+            case R.id.enigma_I: {
+                toggleMenuItem(item);
+                setEnigmaVersion("Enigma1");
+                return true;
+            }
+            case R.id.enigma_m3: {
+                toggleMenuItem(item);
+                setEnigmaVersion("EnigmaM3");
                 return true;
             }
             case R.id.action_settings: {
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity
     private void showPreviousOptions(){
 
     }
-    private void chooseEnigmaVersion(){
+    private void setEnigmaVersion(String version){
 
     }
     private void showSettings(){
@@ -120,6 +126,10 @@ public class MainActivity extends AppCompatActivity
                 "Germans";
         showInfoDialog(MainActivity.this, "About the Enigma Machine",
                 msg);
+    }
+
+    private void toggleMenuItem(MenuItem item) {
+        item.setChecked(!item.isChecked());
     }
 
 
