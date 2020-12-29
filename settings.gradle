@@ -1,2 +1,3 @@
+include ':EnigmaMachine'
 include ':app'
 rootProject.name = "AndroidEnigma"
