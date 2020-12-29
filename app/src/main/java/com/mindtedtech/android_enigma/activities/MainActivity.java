@@ -25,6 +25,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static com.mindtedtech.android_enigma.lib.Utils.showInfoDialog;
+
 public class MainActivity extends AppCompatActivity
 {
 
@@ -79,18 +81,48 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            case R.id.action_previous_options: {
+                showPreviousOptions();
+                return true;
+            }
+            case R.id.action_enigma_version: {
+                chooseEnigmaVersion();
+                return true;
+            }
+            case R.id.action_settings: {
+                showSettings();
+                return true;
+            }
+            case R.id.action_about: {
+                showAbout();
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
+
+    private void showPreviousOptions(){
+
+    }
+    private void chooseEnigmaVersion(){
+
+    }
+    private void showSettings(){
+
+    }
+    private void showAbout(){
+        String msg = "The Enigma Machine is used for encryption.\n First developed in the the early " +
+                "to mid 20th century, it was used by the Germans to send secure communication and " +
+                "gave them a huge advantage during WWII.\n\n This app simulates the machine used by the " +
+                "Germans";
+        showInfoDialog(MainActivity.this, "About the Enigma Machine",
+                msg);
+    }
+
+
 
     public void setupToolbars()
     {

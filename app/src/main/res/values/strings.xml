@@ -3,6 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="inputText">Input Text To Be Encoded/Decoded</string>
     <string name="encode">Encode</string>
+    <string name="version">Version</string>
+    <string name="about">About</string>
+    <string name="previous_options">Previous Options</string>
 
 
 </resources>
