@@ -76,8 +76,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        System.out.println("ITEM: " + item + " ********************************");
-
         switch (item.getItemId()){
             case R.id.action_previous_options: {
                 showPreviousOptions();
