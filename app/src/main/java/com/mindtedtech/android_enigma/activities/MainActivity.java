@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.mindtedtech.android_enigma.R;
-import com.mindtedtech.android_enigma.model.Throwaway;
+import com.mindtedtech.android_enigma.model.ListIDs;
 import com.mindtedtech.enigmamachine.interfaces.MachineModel;
 import com.mindtedtech.enigmamachine.utilities.WiringData;
 
@@ -17,8 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -142,18 +140,20 @@ public class MainActivity extends AppCompatActivity
         this.enigmaVersion = version;
 
         // create reflector
-        setupCustomSpinner(R.id.reflector_choice_spinner, WiringData.getReflectorChoices(version));
+        setupCustomSpinner(ListIDs.reflectorID, WiringData.getReflectorChoices(version));
 
         // create rotors
-        int[] rotorIDs = {R.id.rotor_3_choice_spinner, R.id.rotor_2_choice_spinner, R.id.rotor_1_choice_spinner};
-        for (int id : rotorIDs) {
+        for (int id : ListIDs.rotorIDs) {
             setupCustomSpinner(id, WiringData.getRotorChoices(version));
         }
 
-        // create rotor settings
-        int[] rotorSettings = {R.id.rotor_3_setting_spinner, R.id.rotor_2_setting_spinner, R.id.rotor_1_setting_spinner};
-        for (int id : rotorSettings) {
-            setupCustomSpinner(id, Throwaway.ALPHABET);
+        // create rotor initial positions
+        for (int id : ListIDs.rotorInitialPositionIDs) {
+            setupCustomSpinner(id, ListIDs.ALPHABET);
+        }
+
+        for (int id : ListIDs.rotorRingSettingIDs) {
+            setupCustomSpinner(id, ListIDs.ALPHABET);
         }
     }
 

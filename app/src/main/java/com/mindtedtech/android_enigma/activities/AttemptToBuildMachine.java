@@ -28,7 +28,7 @@ public class AttemptToBuildMachine
                                     R.id.plugboard_9, R.id.plugboard_10, R.id.plugboard_11, R.id.plugboard_12,
                                     R.id.plugboard_13 };
     private int[] rotorIDs = {R.id.rotor_3_choice_spinner, R.id.rotor_2_choice_spinner, R.id.rotor_1_choice_spinner}; // arranged backwards for when adding rotors
-    private int[] rotorSettingIDs = { R.id.rotor_3_setting_spinner, R.id.rotor_2_setting_spinner, R.id.rotor_1_setting_spinner };
+    private int[] rotorInitialPositionIDs = { R.id.rotor_3_initial_position_spinner, R.id.rotor_2_initial_position_spinner, R.id.rotor_1_initial_position_spinner};
     private int reflectorID = R.id.reflector_choice_spinner;
 
     public AttemptToBuildMachine(Activity activity)
@@ -128,7 +128,7 @@ public class AttemptToBuildMachine
 
     private void prepareRotorSettings()
     {
-        for (int id : rotorSettingIDs)
+        for (int id : rotorInitialPositionIDs)
         {
             rotorSettings.add(((Spinner) activity.findViewById(id)).getSelectedItem().toString().charAt(0));
         }
