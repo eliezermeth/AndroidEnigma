@@ -144,11 +144,11 @@ public class AttemptToBuildMachine
         switch (ref)
         {
             case "UKW-A":
-                reflectorNumber = 0; break;
-            case "UKW-B":
                 reflectorNumber = 1; break;
-            case "UKW-C":
+            case "UKW-B":
                 reflectorNumber = 2; break;
+            case "UKW-C":
+                reflectorNumber = 3; break;
         }
 
         if (enigmaVersion == WiringData.enimgaVersionsEnum.ENIGMA_M3)
