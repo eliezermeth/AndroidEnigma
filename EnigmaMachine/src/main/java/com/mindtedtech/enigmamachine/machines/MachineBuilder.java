@@ -97,6 +97,7 @@ public class MachineBuilder
      * Method to add connection to plugboard.
      * @param letters Letters to be connected on plugboard.
      */
+    @SuppressWarnings("NewApi")
     public void addPlugboardConnection(String letters)
     {
         if (letters.length() < 2)
