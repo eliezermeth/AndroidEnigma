@@ -1,18 +1,15 @@
 package com.mindtedtech.android_enigma.activities;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.mindtedtech.android_enigma.R;
-import com.mindtedtech.android_enigma.model.Throwaway;
+import com.mindtedtech.android_enigma.model.ListIDs;
+import com.mindtedtech.enigmamachine.interfaces.MachineModel;
+import com.mindtedtech.enigmamachine.utilities.WiringData;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +18,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -29,6 +25,7 @@ import static com.mindtedtech.android_enigma.lib.Utils.showInfoDialog;
 
 public class MainActivity extends AppCompatActivity
 {
+    private static WiringData.enimgaVersionsEnum enigmaVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setupToolbars();
+        setupSpinners(WiringData.enimgaVersionsEnum.ENIGMA_1);
 
         setupFAB();
     }
@@ -49,11 +46,14 @@ public class MainActivity extends AppCompatActivity
 
     // testing the input and output
     private void FABClickAction(){
+        /*
         EditText inputText = findViewById(R.id.input_text);
         String saveText = inputText.getText().toString();
         String scrambled = scrambleWord(saveText);
         TextView outputText = (TextView) findViewById(R.id.output_text);
         outputText.setText(scrambled);
+         */
+        getEncryptedMessage();
     }
 
     // Simple method as part of just quickly scrambling the input text and displaying the output
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-
         switch (item.getItemId()){
             case R.id.action_previous_options: {
                 showPreviousOptions();
@@ -90,11 +89,13 @@ public class MainActivity extends AppCompatActivity
             case R.id.enigma_I: {
                 toggleMenuItem(item);
                 setEnigmaVersion("Enigma1");
+                setupSpinners(WiringData.enimgaVersionsEnum.ENIGMA_1);
                 return true;
             }
             case R.id.enigma_m3: {
                 toggleMenuItem(item);
                 setEnigmaVersion("EnigmaM3");
+                setupSpinners(WiringData.enimgaVersionsEnum.ENIGMA_M3);
                 return true;
             }
             case R.id.action_settings: {
@@ -134,21 +135,25 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    public void setupToolbars()
+    public void setupSpinners(WiringData.enimgaVersionsEnum version)
     {
+        this.enigmaVersion = version;
+
         // create reflector
-        setupCustomSpinner(R.id.reflector_choice_spinner, Throwaway.REFLECTOR_NAMES);
+        setupCustomSpinner(ListIDs.reflectorID, WiringData.getReflectorChoices(version));
 
         // create rotors
-        int[] rotorIDs = {R.id.rotor_3_choice_spinner, R.id.rotor_2_choice_spinner, R.id.rotor_1_choice_spinner};
-        for (int id : rotorIDs) {
-            setupCustomSpinner(id, Throwaway.ROTOR_NAMES);
+        for (int id : ListIDs.rotorIDs) {
+            setupCustomSpinner(id, WiringData.getRotorChoices(version));
         }
 
-        // create rotor settings
-        int[] rotorSettings = {R.id.rotor_3_setting_spinner, R.id.rotor_2_setting_spinner, R.id.rotor_1_setting_spinner};
-        for (int id : rotorSettings) {
-            setupCustomSpinner(id, Throwaway.ALPHABET);
+        // create rotor initial positions
+        for (int id : ListIDs.rotorInitialPositionIDs) {
+            setupCustomSpinner(id, ListIDs.ALPHABET);
+        }
+
+        for (int id : ListIDs.rotorRingSettingIDs) {
+            setupCustomSpinner(id, ListIDs.ALPHABET);
         }
     }
 
@@ -157,9 +162,47 @@ public class MainActivity extends AppCompatActivity
         // find the spinner from the xml
         Spinner spinner = findViewById(spinnerID);
         // create an adapter to describe how the items are displayed
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, contents);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(), R.layout.spinner_item, contents);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        adapter.notifyDataSetChanged();
         // set the spinners adapter to the previously created one
         spinner.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    public void getEncryptedMessage()
+    {
+        AttemptToBuildMachine attempt = new AttemptToBuildMachine(this);
+
+        if (!attempt.isValidConfiguration()) // invalid configuration for machine
+            showInfoDialog(MainActivity.this, "Error", attempt.getErrorMessage());
+        else {
+            // if successful
+            MachineModel model = attempt.buildMachine();
+
+            String inputText = ((EditText) findViewById(R.id.input_text)).getText().toString();
+            String cipherText = typeText(model, inputText);
+
+            TextView outputText = (TextView) findViewById(R.id.output_text);
+            outputText.setText(cipherText);
+        }
+    }
+
+    public String typeText(MachineModel model, String plaintext)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        plaintext = plaintext.toUpperCase();
+        for (char letter : plaintext.toCharArray())
+            if (Character.isLetter(letter))
+                sb.append(model.type(letter));
+
+        return sb.toString();
+    }
+
+    public static WiringData.enimgaVersionsEnum getEnigmaVersion()
+    {
+        return enigmaVersion;
     }
 }

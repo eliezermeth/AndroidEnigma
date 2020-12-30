@@ -18,6 +18,7 @@
                 <item
                     android:id="@+id/enigma_I"
                     android:title="@string/enigma_I"
+                    android:checked="true"
                     app:showAsAction="never" />
                 <item
                     android:id="@+id/enigma_m3"

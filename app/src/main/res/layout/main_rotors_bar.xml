@@ -83,33 +83,89 @@
 
     <!--
     ************************************************************************************************
-    Rotor setting
+    Rotor Initial Position
     -->
 
-    <Spinner
-        android:id="@+id/rotor_3_setting_spinner"
+    <TextView
+        android:id="@+id/rotor_initial_position_label"
         android:layout_width="@dimen/rotor_width"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/rotor_3_choice_spinner"
+        android:text="Initial Position:"
+        android:textSize="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/reflector_choice_spinner"
+        app:layout_constraintTop_toBottomOf="@id/reflector_choice_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_3_initial_position_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/rotor_initial_position_label"
         app:layout_constraintTop_toBottomOf="@id/rotor_3_choice_spinner"
         tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="124dp" />
+        tools:layout_editor_absoluteY="124dp" /> <!-- layout uses spinners as height -->
 
     <Spinner
-        android:id="@+id/rotor_2_setting_spinner"
+        android:id="@+id/rotor_2_initial_position_spinner"
         android:layout_width="@dimen/rotor_width"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/rotor_3_setting_spinner"
-        app:layout_constraintTop_toTopOf="@id/rotor_3_setting_spinner"
+        app:layout_constraintStart_toEndOf="@id/rotor_3_initial_position_spinner"
+        app:layout_constraintTop_toTopOf="@id/rotor_3_initial_position_spinner"
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="124dp" />
 
     <Spinner
-        android:id="@+id/rotor_1_setting_spinner"
+        android:id="@+id/rotor_1_initial_position_spinner"
         android:layout_width="@dimen/rotor_width"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/rotor_2_setting_spinner"
-        app:layout_constraintTop_toTopOf="@id/rotor_3_setting_spinner"
+        app:layout_constraintStart_toEndOf="@id/rotor_2_initial_position_spinner"
+        app:layout_constraintTop_toTopOf="@id/rotor_3_initial_position_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <!--
+    ************************************************************************************************
+    Ring Setting
+    -->
+
+    <TextView
+        android:id="@+id/rotor_ring_setting_label"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        android:text="Ring Setting:"
+        android:textSize="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/rotor_initial_position_label"
+        app:layout_constraintTop_toBottomOf="@id/rotor_3_initial_position_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_3_ring_setting_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/rotor_ring_setting_label"
+        app:layout_constraintTop_toBottomOf="@id/rotor_3_initial_position_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" /> <!-- layout uses spinners as height -->
+
+    <Spinner
+        android:id="@+id/rotor_2_ring_setting_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/rotor_3_ring_setting_spinner"
+        app:layout_constraintTop_toTopOf="@id/rotor_3_ring_setting_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_1_ring_setting_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/rotor_2_ring_setting_spinner"
+        app:layout_constraintTop_toTopOf="@id/rotor_3_ring_setting_spinner"
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="124dp" />
 
