@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.mindtedtech.android_enigma.R;
 import com.mindtedtech.android_enigma.model.Throwaway;
+import com.mindtedtech.enigmamachine.interfaces.MachineModel;
 import com.mindtedtech.enigmamachine.utilities.WiringData;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -24,6 +27,7 @@ import static com.mindtedtech.android_enigma.lib.Utils.showInfoDialog;
 
 public class MainActivity extends AppCompatActivity
 {
+    private static WiringData.enimgaVersionsEnum enigmaVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setupSpinners();
+        setupSpinners(WiringData.enimgaVersionsEnum.ENIGMA_1);
 
         setupFAB();
     }
@@ -44,11 +48,14 @@ public class MainActivity extends AppCompatActivity
 
     // testing the input and output
     private void FABClickAction(){
+        /*
         EditText inputText = findViewById(R.id.input_text);
         String saveText = inputText.getText().toString();
         String scrambled = scrambleWord(saveText);
         TextView outputText = (TextView) findViewById(R.id.output_text);
         outputText.setText(scrambled);
+         */
+        getEncryptedMessage();
     }
 
     // Simple method as part of just quickly scrambling the input text and displaying the output
@@ -84,13 +91,13 @@ public class MainActivity extends AppCompatActivity
             case R.id.enigma_I: {
                 toggleMenuItem(item);
                 setEnigmaVersion("Enigma1");
-                setupSpinners();
+                setupSpinners(WiringData.enimgaVersionsEnum.ENIGMA_1);
                 return true;
             }
             case R.id.enigma_m3: {
                 toggleMenuItem(item);
                 setEnigmaVersion("EnigmaM3");
-                setupSpinners();
+                setupSpinners(WiringData.enimgaVersionsEnum.ENIGMA_M3);
                 return true;
             }
             case R.id.action_settings: {
@@ -126,14 +133,13 @@ public class MainActivity extends AppCompatActivity
 
     private void toggleMenuItem(MenuItem item) {
         item.setChecked(!item.isChecked());
-        setupSpinners();
     }
 
 
 
-    public void setupSpinners()
+    public void setupSpinners(WiringData.enimgaVersionsEnum version)
     {
-        WiringData.enimgaVersionsEnum version =  determineEnigmaVersion();
+        this.enigmaVersion = version;
 
         // create reflector
         setupCustomSpinner(R.id.reflector_choice_spinner, WiringData.getReflectorChoices(version));
@@ -151,23 +157,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private WiringData.enimgaVersionsEnum determineEnigmaVersion()
-    {
-        WiringData.enimgaVersionsEnum versionEnum;
-
-        if (findViewById(R.id.action_enigma_version) == null)
-            return WiringData.enimgaVersionsEnum.ENIGMA_1; // if null, default
-
-        if (findViewById(R.id.enigma_I).isSelected()) // if Enigma I
-            versionEnum = WiringData.enimgaVersionsEnum.ENIGMA_1;
-        else if (findViewById(R.id.enigma_I).isSelected()) // if Enigma M3
-            versionEnum = WiringData.enimgaVersionsEnum.ENIGMA_M3;
-        else // catch
-            versionEnum = WiringData.enimgaVersionsEnum.ENIGMA_1;
-
-        return versionEnum;
-    }
-
     public void setupCustomSpinner(int spinnerID, String[] contents)
     {
         // find the spinner from the xml
@@ -179,5 +168,41 @@ public class MainActivity extends AppCompatActivity
         // set the spinners adapter to the previously created one
         spinner.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    public void getEncryptedMessage()
+    {
+        AttemptToBuildMachine attempt = new AttemptToBuildMachine(this);
+
+        if (!attempt.isValidConfiguration()) // invalid configuration for machine
+            showInfoDialog(MainActivity.this, "Error", attempt.getErrorMessage());
+        else {
+            // if successful
+            MachineModel model = attempt.buildMachine();
+
+            String inputText = ((EditText) findViewById(R.id.input_text)).getText().toString();
+            String cipherText = typeText(model, inputText);
+
+            TextView outputText = (TextView) findViewById(R.id.output_text);
+            outputText.setText(cipherText);
+        }
+    }
+
+    public String typeText(MachineModel model, String plaintext)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        plaintext = plaintext.toUpperCase();
+        for (char letter : plaintext.toCharArray())
+            if (Character.isLetter(letter))
+                sb.append(model.type(letter));
+
+        return sb.toString();
+    }
+
+    public static WiringData.enimgaVersionsEnum getEnigmaVersion()
+    {
+        return enigmaVersion;
     }
 }
