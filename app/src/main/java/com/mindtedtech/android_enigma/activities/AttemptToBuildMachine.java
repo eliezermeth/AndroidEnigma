@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.mindtedtech.android_enigma.R;
+import com.mindtedtech.android_enigma.model.ListIDs;
 import com.mindtedtech.enigmamachine.machine_pieces.ConstructedMilitaryModel;
 import com.mindtedtech.enigmamachine.machines.MachineBuilder;
 import com.mindtedtech.enigmamachine.utilities.WiringData;
@@ -20,16 +20,10 @@ public class AttemptToBuildMachine
     private ArrayList<String> plugboardProblems = new ArrayList<>();
     private ArrayList<Integer> rotors = new ArrayList<>();
     private boolean rotorProblems;
-    private ArrayList<Character> rotorSettings = new ArrayList<>();
-    private int reflectorNumber;
+    private ArrayList<Character> rotorInitialPositions = new ArrayList<>();
+    private ArrayList<Character> rotorRingSettings = new ArrayList<>();
 
-    private int[] plugboardIDs = {R.id.plugboard_1, R.id.plugboard_2, R.id.plugboard_3, R.id.plugboard_4,
-                                    R.id.plugboard_5, R.id.plugboard_6, R.id.plugboard_7, R.id.plugboard_8,
-                                    R.id.plugboard_9, R.id.plugboard_10, R.id.plugboard_11, R.id.plugboard_12,
-                                    R.id.plugboard_13 };
-    private int[] rotorIDs = {R.id.rotor_3_choice_spinner, R.id.rotor_2_choice_spinner, R.id.rotor_1_choice_spinner}; // arranged backwards for when adding rotors
-    private int[] rotorInitialPositionIDs = { R.id.rotor_3_initial_position_spinner, R.id.rotor_2_initial_position_spinner, R.id.rotor_1_initial_position_spinner};
-    private int reflectorID = R.id.reflector_choice_spinner;
+    private int reflectorNumber = 0;
 
     public AttemptToBuildMachine(Activity activity)
     {
@@ -40,14 +34,14 @@ public class AttemptToBuildMachine
         prepareReflector();
     }
 
-    public void preparePlugboard()
+    private void preparePlugboard()
     {
         ArrayList<String> connections = new ArrayList<>();
         ArrayList<Character> letters = new ArrayList<>();
         ArrayList<Character> problems = new ArrayList<>();
 
         // add to connections arraylists
-        for (int id : plugboardIDs)
+        for (int id : ListIDs.plugboardIDs)
         {
             String text = ((EditText)activity.findViewById(id)).getText().toString().toUpperCase();
             if (text.length() == 2)
@@ -92,9 +86,9 @@ public class AttemptToBuildMachine
         }
     }
 
-    public void prepareRotors()
+    private void prepareRotors()
     {
-        for (int id : rotorIDs)
+        for (int id : ListIDs.rotorIDs)
         {
             String selected = ((Spinner) activity.findViewById(id)).getSelectedItem().toString();
             int toAdd = -1;
@@ -123,20 +117,29 @@ public class AttemptToBuildMachine
             rotors.add(toAdd);
         }
 
-        prepareRotorSettings();
+        prepareRotorInitialPositions();
+        prepareRotorRingSettings();
     }
 
-    private void prepareRotorSettings()
+    private void prepareRotorInitialPositions()
     {
-        for (int id : rotorInitialPositionIDs)
+        for (int id : ListIDs.rotorInitialPositionIDs)
         {
-            rotorSettings.add(((Spinner) activity.findViewById(id)).getSelectedItem().toString().charAt(0));
+            rotorInitialPositions.add(((Spinner) activity.findViewById(id)).getSelectedItem().toString().charAt(0));
         }
     }
 
-    public void prepareReflector()
+    private void prepareRotorRingSettings()
     {
-        String ref = ((Spinner) activity.findViewById(reflectorID)).getSelectedItem().toString();
+        for (int id : ListIDs.rotorRingSettingIDs)
+        {
+            rotorRingSettings.add(((Spinner) activity.findViewById(id)).getSelectedItem().toString().charAt(0));
+        }
+    }
+
+    private void prepareReflector()
+    {
+        String ref = ((Spinner) activity.findViewById(ListIDs.reflectorID)).getSelectedItem().toString();
 
         switch (ref)
         {
@@ -194,13 +197,16 @@ public class AttemptToBuildMachine
         if (validPlugboardConnections.size() > 0)
             for (String conn : validPlugboardConnections)
                 builder.addPlugboardConnection(conn); // add plugboard connections
-        // add rotors and initial positions // TODO add another row of spinners for initial position; using those for setting
+        // add rotors and initial positions
         builder.setRotor1(rotors.get(0));
-        builder.setRotor1InitialPosition(rotorSettings.get(0));
+        builder.setRotor1InitialPosition(rotorInitialPositions.get(0));
+        builder.setRotor1RingSetting(rotorRingSettings.get(0));
         builder.setRotor2(rotors.get(1));
-        builder.setRotor2InitialPosition(rotorSettings.get(1));
+        builder.setRotor2InitialPosition(rotorInitialPositions.get(1));
+        builder.setRotor1RingSetting(rotorRingSettings.get(1));
         builder.setRotor3(rotors.get(2));
-        builder.setRotor3InitialPosition(rotorSettings.get(2));
+        builder.setRotor3InitialPosition(rotorInitialPositions.get(2));
+        builder.setRotor1RingSetting(rotorRingSettings.get(2));
         // set reflector
         builder.setReflectorSelected(reflectorNumber);
 
