@@ -229,47 +229,4 @@ public class MainActivity extends AppCompatActivity
     {
         return enigmaVersion;
     }
-
-    // below is only kept if can successfully write to file
-
-    // for writing to file
-    private Context mContext = MainActivity.this;
-    private static final int REQUEST = 112;
-    public void preparePermissionsToWrite()
-    {
-        if (Build.VERSION.SDK_INT >= 23) {
-            String[] PERMISSIONS = {android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
-            if (!hasPermissions(mContext, PERMISSIONS)) {
-                ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, REQUEST );
-            } else {
-                //do here
-            }
-        } else {
-            //do here
-        }
-    }
-    private static boolean hasPermissions(Context context, String... permissions) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
-            for (String permission : permissions) {
-                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case 112: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //do here
-                } else {
-                    Toast.makeText(MainActivity.this, "The app was not allowed to read your store.", Toast.LENGTH_LONG).show();
-                }
-            }
-        }
-    }
 }
