@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidEnigma">
-        <activity android:name=".activities.SplashActivity"
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
+        <activity
+            android:name=".activities.SplashActivity"
             android:theme="@style/Theme.AndroidEnigma.NoActionBar.SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +27,6 @@
             android:theme="@style/Theme.AndroidEnigma.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
     </application>

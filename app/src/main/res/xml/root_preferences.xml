@@ -1,0 +1,33 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/display_header">
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/night_mode_key"
+            app:summaryOff="@string/night_mode_off"
+            app:summaryOn="@string/night_mode_on"
+            app:title="@string/night_mode_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Enigma">
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="Save Messages"
+            app:summaryOn="Save all your messages"
+            app:summaryOff="Toss away all your messages"
+            android:title="Save Messages" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="Auto-Save"
+            app:summaryOff="On exit, your enigma settings will not be saved"
+            app:summaryOn="On exit, your enigma settings will be saved"
+            android:title="Auto-Save enigma on exit" />
+
+        <Preference
+            android:title="Delete Saved Messages"
+            app:key="delete" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

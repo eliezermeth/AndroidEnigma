@@ -1,5 +1,6 @@
 package com.mindtedtech.android_enigma.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -118,7 +119,8 @@ public class MainActivity extends AppCompatActivity
 
     }
     private void showSettings(){
-
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        startActivityForResult(intent, 1);
     }
     private void showAbout(){
         String msg = "The Enigma Machine is used for encryption.\n First developed in the the early " +
