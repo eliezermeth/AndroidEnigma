@@ -1,8 +1,6 @@
 package com.mindtedtech.android_enigma.activities;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -14,11 +12,9 @@ import com.mindtedtech.android_enigma.model.ListIDs;
 import com.mindtedtech.enigmamachine.interfaces.MachineModel;
 import com.mindtedtech.enigmamachine.utilities.WiringData;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,14 +22,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 
 import static com.mindtedtech.android_enigma.lib.Utils.showInfoDialog;
 
@@ -63,13 +54,6 @@ public class MainActivity extends AppCompatActivity
 
     // testing the input and output
     private void FABClickAction(){
-        /*
-        EditText inputText = findViewById(R.id.input_text);
-        String saveText = inputText.getText().toString();
-        String scrambled = scrambleWord(saveText);
-        TextView outputText = (TextView) findViewById(R.id.output_text);
-        outputText.setText(scrambled);
-         */
         getEncryptedMessage();
     }
 
@@ -99,8 +83,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch (item.getItemId()){
-            case R.id.action_previous_options: {
-                showPreviousOptions();
+            case R.id.action_saved_runs: {
+                showSavedRuns();
                 return true;
             }
             case R.id.enigma_I: {
@@ -128,8 +112,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void showPreviousOptions(){
-
+    private void showSavedRuns(){
+        Intent intent = new Intent(getApplicationContext(), SavedRunsActivity.class);
+        startActivity(intent);
     }
     private void setEnigmaVersion(String version){
 
