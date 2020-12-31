@@ -31,7 +31,7 @@ import static com.mindtedtech.android_enigma.lib.Utils.showInfoDialog;
 public class MainActivity extends AppCompatActivity
 {
     private static WiringData.enimgaVersionsEnum enigmaVersion;
-    private MemoryBank memoryBank;
+    public static MemoryBank memoryBank;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity
             mi.plaintext = inputText;
             mi.ciphertext = cipherText;
             // save message to memory banks
-            memoryBank.addMessage(mi);
+            memoryBank.addMessage(mi); // TODO currently always saves; should check settings
         }
     }
 

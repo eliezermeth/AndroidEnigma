@@ -22,6 +22,8 @@ public class MemoryBank
     private String fileDirectory;
     private String fileName = "SavedMessages.ser";
 
+    public final int MAX_SAVED_MESSAGES = 20;
+
     public LinkedList<MessageInfo> sentMessages = new LinkedList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -36,6 +38,10 @@ public class MemoryBank
     public void addMessage(MessageInfo message) // add latest messages to beginning
     {
         sentMessages.add(0, message);
+
+        if (sentMessages.size() > MAX_SAVED_MESSAGES)
+            sentMessages.remove(sentMessages.size() - 1); // remove oldest message
+
         writeFile();
     }
 
