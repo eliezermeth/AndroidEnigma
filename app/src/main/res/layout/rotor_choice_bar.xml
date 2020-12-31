@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/main_rotors_bar">
+    <!--
+    ************************************************************************************************
+    Rotor choice
+    -->
+
+    <Spinner
+        android:id="@+id/reflector_choice_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="@dimen/rotor_choice_height"
+        app:layout_constraintStart_toStartOf="@id/reflector_label"
+        app:layout_constraintTop_toBottomOf="@id/reflector_label"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_3_choice_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="@dimen/rotor_choice_height"
+        app:layout_constraintStart_toEndOf="@id/reflector_choice_spinner"
+        app:layout_constraintTop_toTopOf="@id/reflector_choice_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_2_choice_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="@dimen/rotor_choice_height"
+        app:layout_constraintStart_toEndOf="@id/rotor_3_choice_spinner"
+        app:layout_constraintTop_toTopOf="@id/reflector_choice_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_1_choice_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="@dimen/rotor_choice_height"
+        app:layout_constraintStart_toEndOf="@id/rotor_2_choice_spinner"
+        app:layout_constraintTop_toTopOf="@id/reflector_choice_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+</merge>

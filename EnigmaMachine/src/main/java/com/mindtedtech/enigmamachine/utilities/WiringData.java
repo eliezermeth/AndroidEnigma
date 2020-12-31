@@ -2,6 +2,7 @@ package com.mindtedtech.enigmamachine.utilities;
 
 import com.mindtedtech.enigmamachine.machine_pieces.GearConstruction;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -87,5 +88,60 @@ public class WiringData
         selection.put("reflector", reflectors);
 
         return selection;
+    }
+
+    public static String[] getRotorChoices(enimgaVersionsEnum versionsEnum)
+    {
+        ArrayList<String> array = new ArrayList<>();
+        array.add("I");
+        array.add("II");
+        array.add("III");
+        array.add("IV");
+        array.add("V");
+
+        switch (versionsEnum)
+        {
+            case ENIGMA_1:
+                break;
+            case ENIGMA_M3:
+                array.add("VI");
+                array.add("VII");
+                array.add("VIII");
+                break;
+            default:
+                break;
+        }
+
+        return convertToStringArray(array);
+    }
+
+    public static String[] getReflectorChoices(enimgaVersionsEnum versionsEnum)
+    {
+        ArrayList<String> array = new ArrayList<>();
+        array.add("UKW-B");
+        array.add("UKW-C");
+
+        switch (versionsEnum)
+        {
+            case ENIGMA_1:
+                array.add(0, "UKW-A");
+                break;
+            case ENIGMA_M3:
+                break;
+            default:
+                break;
+        }
+
+        return convertToStringArray(array);
+    }
+
+    private static String[] convertToStringArray(ArrayList<String> arrayList)
+    {
+        String[] array = new String[arrayList.size()];
+
+        for (int i = 0; i < arrayList.size(); i++)
+            array[i] = arrayList.get(i);
+
+        return array;
     }
 }

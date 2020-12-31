@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:showIn="@layout/main_rotors_bar">
+    <!--
+    Labels
+    -->
+    <TextView
+        android:id="@+id/reflector_label"
+        style="@style/RotorBarLabel"
+        android:text="R"
+        app:layout_constraintEnd_toStartOf="@+id/rotor_3_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rotor_3_label"
+        style="@style/RotorBarLabel"
+        android:text="III"
+        app:layout_constraintEnd_toStartOf="@+id/rotor_2_label"
+        app:layout_constraintStart_toEndOf="@+id/reflector_label"
+        app:layout_constraintTop_toTopOf="@+id/reflector_label" />
+
+    <TextView
+        android:id="@+id/rotor_2_label"
+        style="@style/RotorBarLabel"
+        android:text="II"
+        app:layout_constraintEnd_toStartOf="@+id/rotor_1_label"
+        app:layout_constraintStart_toEndOf="@+id/rotor_3_label"
+        app:layout_constraintTop_toTopOf="@+id/reflector_label" />
+
+    <TextView
+        android:id="@+id/rotor_1_label"
+        style="@style/RotorBarLabel"
+        android:text="I"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rotor_2_label"
+        app:layout_constraintTop_toTopOf="@+id/reflector_label" />
+</merge>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/main_rotors_bar">
+    <!--
+    ************************************************************************************************
+    Ring Setting
+    -->
+
+    <TextView
+        android:id="@+id/rotor_ring_setting_label"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        android:text="@string/ring_setting"
+        android:textSize="10sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/rotor_initial_position_label"
+        app:layout_constraintTop_toBottomOf="@id/rotor_3_initial_position_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_3_ring_setting_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/rotor_ring_setting_label"
+        app:layout_constraintTop_toBottomOf="@id/rotor_3_initial_position_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" /> <!-- layout uses spinners as height -->
+
+    <Spinner
+        android:id="@+id/rotor_2_ring_setting_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/rotor_3_ring_setting_spinner"
+        app:layout_constraintTop_toTopOf="@id/rotor_3_ring_setting_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <Spinner
+        android:id="@+id/rotor_1_ring_setting_spinner"
+        android:layout_width="@dimen/rotor_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/rotor_2_ring_setting_spinner"
+        app:layout_constraintTop_toTopOf="@id/rotor_3_ring_setting_spinner"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="124dp" />
+</merge>
