@@ -1,15 +1,24 @@
 package com.mindtedtech.android_enigma.activities;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.mindtedtech.android_enigma.R;
+import com.mindtedtech.android_enigma.memory.MemoryBank;
+import com.mindtedtech.android_enigma.memory.MessageInfo;
 import com.mindtedtech.android_enigma.model.ListIDs;
 import com.mindtedtech.enigmamachine.interfaces.MachineModel;
 import com.mindtedtech.enigmamachine.utilities.WiringData;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,16 +26,23 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 
 import static com.mindtedtech.android_enigma.lib.Utils.showInfoDialog;
 
 public class MainActivity extends AppCompatActivity
 {
     private static WiringData.enimgaVersionsEnum enigmaVersion;
+    private MemoryBank memoryBank;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -35,6 +51,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setupSpinners(WiringData.enimgaVersionsEnum.ENIGMA_1);
+        memoryBank = new MemoryBank(MainActivity.this);
 
         setupFAB();
     }
@@ -186,6 +203,13 @@ public class MainActivity extends AppCompatActivity
 
             TextView outputText = (TextView) findViewById(R.id.output_text);
             outputText.setText(cipherText);
+
+            // save message info
+            MessageInfo mi = attempt.getMachineMessageSettings();
+            mi.plaintext = inputText;
+            mi.ciphertext = cipherText;
+            // save message to memory banks
+            memoryBank.addMessage(mi);
         }
     }
 
@@ -204,5 +228,48 @@ public class MainActivity extends AppCompatActivity
     public static WiringData.enimgaVersionsEnum getEnigmaVersion()
     {
         return enigmaVersion;
+    }
+
+    // below is only kept if can successfully write to file
+
+    // for writing to file
+    private Context mContext = MainActivity.this;
+    private static final int REQUEST = 112;
+    public void preparePermissionsToWrite()
+    {
+        if (Build.VERSION.SDK_INT >= 23) {
+            String[] PERMISSIONS = {android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            if (!hasPermissions(mContext, PERMISSIONS)) {
+                ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, REQUEST );
+            } else {
+                //do here
+            }
+        } else {
+            //do here
+        }
+    }
+    private static boolean hasPermissions(Context context, String... permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 112: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //do here
+                } else {
+                    Toast.makeText(MainActivity.this, "The app was not allowed to read your store.", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 }
