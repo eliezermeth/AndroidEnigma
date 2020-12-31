@@ -8,6 +8,8 @@
     <string name="previous_options">Previous Options</string>
     <string name="enigma_I">Enigma I</string>
     <string name="enigma_m3">Enigma M3</string>
+    <string name="ring_setting">Ring Setting:</string>
+    <string name="initial_position">Initial Position:</string>
 
 
 </resources>
