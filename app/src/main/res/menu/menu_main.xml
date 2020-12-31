@@ -4,9 +4,9 @@
     tools:context="com.mindtedtech.android_enigma.activities.MainActivity">
 
     <item
-        android:id="@+id/action_previous_options"
+        android:id="@+id/action_saved_runs"
         android:icon="@drawable/ic_baseline_list_24"
-        android:title="@string/previous_options"
+        android:title="@string/saved_runs"
         app:showAsAction="ifRoom|withText" />
 
     <item
