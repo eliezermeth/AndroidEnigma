@@ -1,13 +1,18 @@
 package com.mindtedtech.android_enigma.activities;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.mindtedtech.android_enigma.R;
+import com.mindtedtech.android_enigma.memory.MemoryBank;
+import com.mindtedtech.android_enigma.memory.MessageInfo;
 import com.mindtedtech.android_enigma.model.ListIDs;
 import com.mindtedtech.enigmamachine.interfaces.MachineModel;
 import com.mindtedtech.enigmamachine.utilities.WiringData;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -26,7 +31,9 @@ import static com.mindtedtech.android_enigma.lib.Utils.showInfoDialog;
 public class MainActivity extends AppCompatActivity
 {
     private static WiringData.enimgaVersionsEnum enigmaVersion;
+    public static MemoryBank memoryBank;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -35,6 +42,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setupSpinners(WiringData.enimgaVersionsEnum.ENIGMA_1);
+        memoryBank = new MemoryBank(MainActivity.this);
 
         setupFAB();
     }
@@ -46,13 +54,6 @@ public class MainActivity extends AppCompatActivity
 
     // testing the input and output
     private void FABClickAction(){
-        /*
-        EditText inputText = findViewById(R.id.input_text);
-        String saveText = inputText.getText().toString();
-        String scrambled = scrambleWord(saveText);
-        TextView outputText = (TextView) findViewById(R.id.output_text);
-        outputText.setText(scrambled);
-         */
         getEncryptedMessage();
     }
 
@@ -82,8 +83,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch (item.getItemId()){
-            case R.id.action_previous_options: {
-                showPreviousOptions();
+            case R.id.action_saved_runs: {
+                showSavedRuns();
                 return true;
             }
             case R.id.enigma_I: {
@@ -111,8 +112,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void showPreviousOptions(){
-
+    private void showSavedRuns(){
+        Intent intent = new Intent(getApplicationContext(), SavedRunsActivity.class);
+        startActivity(intent);
     }
     private void setEnigmaVersion(String version){
 
@@ -186,6 +188,13 @@ public class MainActivity extends AppCompatActivity
 
             TextView outputText = (TextView) findViewById(R.id.output_text);
             outputText.setText(cipherText);
+
+            // save message info
+            MessageInfo mi = attempt.getMachineMessageSettings();
+            mi.plaintext = inputText;
+            mi.ciphertext = cipherText;
+            // save message to memory banks
+            memoryBank.addMessage(mi); // TODO currently always saves; should check settings
         }
     }
 
