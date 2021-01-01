@@ -4,33 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="@layout/content_main">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
-
-    <include
-        android:id="@+id/enigma_hardware_land_layout"
-        layout="@layout/main_enigma_hardware"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guide"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <include
-        android:id="@+id/input_text_land_layout"
-        layout="@layout/main_input_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha=".8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guide"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+    <include layout="@layout/main_enigma_hardware" />
+    <include layout="@layout/main_input_text" />
 </merge>
