@@ -18,13 +18,6 @@
             app:summaryOff="Toss away all your messages"
             android:title="Save Messages" />
 
-        <SwitchPreferenceCompat
-            app:defaultValue="true"
-            app:key="Auto-Save"
-            app:summaryOff="On exit, your enigma settings will not be saved"
-            app:summaryOn="On exit, your enigma settings will be saved"
-            android:title="Auto-Save enigma on exit" />
-
         <Preference
             android:title="Delete Saved Messages"
             app:key="delete" />

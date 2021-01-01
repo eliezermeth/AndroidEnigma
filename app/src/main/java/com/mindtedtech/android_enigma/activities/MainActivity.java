@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity
     private String saveMessage;
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onStop() {
+        super.onStop();
 
         keepDataIfSavedMessagesWasOn();
     }
