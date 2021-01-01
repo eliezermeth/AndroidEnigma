@@ -1,10 +1,13 @@
 package com.mindtedtech.android_enigma.activities;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -57,6 +60,8 @@ public class SettingsActivity extends AppCompatActivity {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
 
             setNightModePreferenceListener();
+
+            setDeleteRuns();
         }
 
         private void setNightModePreferenceListener() {
@@ -68,6 +73,40 @@ public class SettingsActivity extends AppCompatActivity {
                     return true;
                 });
             }
+        }
+
+        private void setDeleteRuns() {
+            Preference button = findPreference(getString(R.string.delete_button));
+            if (button != null) {
+                button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        deleteDialog();
+                        return true;
+                    }
+                });
+            }
+        }
+
+        private void deleteDialog() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Confirm");
+            builder.setMessage("Are you sure? \nDoing this will delete saved Data");
+            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    SavedRunsActivity.deleteRuns();
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
         }
     }
 }

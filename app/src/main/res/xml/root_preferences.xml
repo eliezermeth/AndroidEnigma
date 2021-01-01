@@ -19,8 +19,9 @@
             android:title="Save Messages" />
 
         <Preference
-            android:title="Delete Saved Messages"
-            app:key="delete" />
+            android:title="Delete Runs"
+            app:key="@string/delete_button"
+            android:summary="Delete your data"/>
 
     </PreferenceCategory>
 
