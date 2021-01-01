@@ -1,7 +1,10 @@
 package com.mindtedtech.android_enigma.activities;
 
 import android.content.Intent;
+
+import android.content.SharedPreferences;
 import android.os.Build;
+
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -26,12 +29,32 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static com.mindtedtech.android_enigma.lib.Utils.showInfoDialog;
 
 public class MainActivity extends AppCompatActivity
 {
     private static WiringData.enimgaVersionsEnum enigmaVersion;
     public static MemoryBank memoryBank;
+    private String saveMessage;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        keepDataIfSavedMessagesWasOn();
+    }
+
+    private void keepDataIfSavedMessagesWasOn() {
+        SharedPreferences defaultSharedPreferences = getDefaultSharedPreferences(this);
+        if (defaultSharedPreferences.getBoolean(saveMessage, true)) {
+            return;
+        }
+        else {
+            SavedRunsActivity.deleteRuns();
+        }
+
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -45,6 +68,11 @@ public class MainActivity extends AppCompatActivity
         memoryBank = new MemoryBank(MainActivity.this);
 
         setupFAB();
+        setupFields();
+    }
+
+    private void setupFields() {
+        saveMessage = getString(R.string.save_message);
     }
 
     private void setupFAB() {
@@ -103,6 +131,10 @@ public class MainActivity extends AppCompatActivity
                 showSettings();
                 return true;
             }
+            case R.id.delete_runs: {
+                deleteRuns();
+                return true;
+            }
             case R.id.action_about: {
                 showAbout();
                 return true;
@@ -110,6 +142,10 @@ public class MainActivity extends AppCompatActivity
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void deleteRuns(){
+        SavedRunsActivity.deleteRuns();
     }
 
     private void showSavedRuns(){
@@ -120,7 +156,8 @@ public class MainActivity extends AppCompatActivity
 
     }
     private void showSettings(){
-
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        startActivityForResult(intent, 1);
     }
     private void showAbout(){
         String msg = "The Enigma Machine is used for encryption.\n First developed in the the early " +

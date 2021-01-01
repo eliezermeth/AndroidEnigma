@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidEnigma">
         <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
             android:name=".activities.SavedRunsActivity"
             android:label="@string/title_activity_saved_runs"
             android:theme="@style/Theme.AndroidEnigma.NoActionBar" />

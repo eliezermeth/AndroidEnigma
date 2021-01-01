@@ -10,15 +10,21 @@
     <string name="enigma_m3">Enigma M3</string>
     <string name="ring_setting">Ring Setting:</string>
     <string name="initial_position">Initial Position:</string>
-    <string name="title_activity_saved_runs">SavedRuns</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="display_header">Display</string>
+    <string name="save_message">Save Messages</string>
+
+
+    <string name="night_mode_key">Night Mode</string>
+    <string name="night_mode_title">Dark/Night Mode</string>
+    <string name="night_mode_off">Never use Night/Dark Mode</string>
+    <string name="night_mode_on">Use Night/Dark Mode (unless disabled in OS Settings)</string>
+
+    <string name="title_activity_saved_runs">SavedRuns</string>
+
 
 
 </resources>
