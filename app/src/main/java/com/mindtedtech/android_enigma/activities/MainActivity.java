@@ -131,10 +131,6 @@ public class MainActivity extends AppCompatActivity
                 showSettings();
                 return true;
             }
-            case R.id.delete_runs: {
-                deleteRuns();
-                return true;
-            }
             case R.id.action_about: {
                 showAbout();
                 return true;
@@ -142,10 +138,6 @@ public class MainActivity extends AppCompatActivity
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void deleteRuns(){
-        SavedRunsActivity.deleteRuns();
     }
 
     private void showSavedRuns(){

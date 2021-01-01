@@ -16,6 +16,7 @@
     <!-- Preference Titles -->
     <string name="display_header">Display</string>
     <string name="save_message">Save Messages</string>
+    <string name="delete_button">Delete</string>
 
 
     <string name="night_mode_key">Night Mode</string>
@@ -24,7 +25,6 @@
     <string name="night_mode_on">Use Night/Dark Mode (unless disabled in OS Settings)</string>
 
     <string name="title_activity_saved_runs">SavedRuns</string>
-
 
 
 </resources>
