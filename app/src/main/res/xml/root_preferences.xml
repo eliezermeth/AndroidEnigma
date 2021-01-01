@@ -13,7 +13,7 @@
     <PreferenceCategory app:title="Enigma">
         <SwitchPreferenceCompat
             app:defaultValue="true"
-            app:key="Save Messages"
+            app:key="@string/save_message"
             app:summaryOn="Save all your messages"
             app:summaryOff="Toss away all your messages"
             android:title="Save Messages" />
@@ -28,6 +28,7 @@
         <Preference
             android:title="Delete Saved Messages"
             app:key="delete" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

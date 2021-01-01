@@ -57,8 +57,6 @@ public class SettingsActivity extends AppCompatActivity {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
 
             setNightModePreferenceListener();
-
-            setDeleteMessageListener();
         }
 
         private void setNightModePreferenceListener() {
@@ -70,19 +68,6 @@ public class SettingsActivity extends AppCompatActivity {
                     return true;
                 });
             }
-        }
-
-        private void setDeleteMessageListener(){
-            Preference pref = (Preference) findPreference("delete");
-            pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if(pref.hasKey()){
-
-                    }
-                    return false;
-                }
-            });
         }
     }
 }

@@ -45,6 +45,12 @@ public class MemoryBank
         writeFile();
     }
 
+    public void deleteMessage(){
+        sentMessages.clear();
+
+        writeFile();
+    }
+
     /* ----------------------------------------------------------------------------
     File Operations
      */
