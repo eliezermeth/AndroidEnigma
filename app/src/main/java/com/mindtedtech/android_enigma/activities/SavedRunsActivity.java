@@ -137,4 +137,8 @@ public class SavedRunsActivity extends AppCompatActivity
 
         return sb.toString();
     }
+
+    public static void deleteRuns() {
+        MainActivity.memoryBank.deleteMessage();
+    }
 }

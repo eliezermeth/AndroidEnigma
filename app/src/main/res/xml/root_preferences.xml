@@ -1,0 +1,28 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/display_header">
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/night_mode_key"
+            app:summaryOff="@string/night_mode_off"
+            app:summaryOn="@string/night_mode_on"
+            app:title="@string/night_mode_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Enigma">
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/save_message"
+            app:summaryOn="Save all your messages"
+            app:summaryOff="Toss away all your messages"
+            android:title="Save Messages" />
+
+        <Preference
+            android:title="Delete Runs"
+            app:key="@string/delete_button"
+            android:summary="Delete your data"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
