@@ -14,6 +14,7 @@
         android:hint="@string/inputText"
         android:inputType="textMultiLine"
         android:maxWidth="@dimen/max_textbox_width"
+        android:padding="@dimen/textbox_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

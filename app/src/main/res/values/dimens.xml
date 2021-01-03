@@ -6,4 +6,6 @@
     <dimen name="plugboard_label_width">325dp</dimen>
 
     <dimen name="max_textbox_width">256dp</dimen>
+
+    <dimen name="textbox_padding">2dp</dimen>
 </resources>
