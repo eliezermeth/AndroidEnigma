@@ -4,12 +4,15 @@
     <style name="RotorBarLabel">
         <item name="android:layout_width">@dimen/rotor_width</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@color/backgroundColoredColor</item>
         <item name="layout_constraintHorizontal_chainStyle">packed</item>
         <item name="layout_constraintHorizontal_bias">0.5</item>
     </style>
 
     <style name="PlugboardEditText">
+        <item name="android:textColor">@color/primaryTextColor</item>
         <item name="layout_constraintHorizontal_chainStyle">spread</item>
         <item name="layout_constraintHorizontal_bias">0.5</item>
         <item name="android:background">@layout/edit_text_border</item>
