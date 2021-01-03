@@ -14,24 +14,24 @@
         android:hint="@string/inputText"
         android:inputType="textMultiLine"
         android:maxWidth="@dimen/max_textbox_width"
+        android:padding="@dimen/textbox_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/plugboard_7"
-        tools:showIn="@layout/content_main" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- the output of the text you inputted -->
     <TextView
         android:id="@+id/output_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+
         android:maxWidth="@dimen/max_textbox_width"
         android:text="Show Output"
         android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/input_text"
+        app:layout_constraintStart_toStartOf="@id/input_text"
         app:layout_constraintTop_toTopOf="@+id/input_text" />
 
 </merge>

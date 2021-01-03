@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:tools="http://schemas.android.com/tools"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="@layout/main_rotors_bar">
     <!--
     Labels
@@ -9,6 +9,7 @@
     <TextView
         android:id="@+id/reflector_label"
         style="@style/RotorBarLabel"
+        android:layout_marginTop="@dimen/machine_separate_components"
         android:text="R"
         app:layout_constraintEnd_toStartOf="@+id/rotor_3_label"
         app:layout_constraintStart_toStartOf="parent"
