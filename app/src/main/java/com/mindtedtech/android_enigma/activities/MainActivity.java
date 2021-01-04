@@ -131,6 +131,10 @@ public class MainActivity extends AppCompatActivity
                 showSettings();
                 return true;
             }
+            case R.id.action_how_to_use: {
+                showHowToUse();
+                return true;
+            }
             case R.id.action_about: {
                 showAbout();
                 return true;
@@ -146,6 +150,10 @@ public class MainActivity extends AppCompatActivity
     }
     private void setEnigmaVersion(String version){
 
+    }
+    private void showHowToUse(){
+        Intent intent = new Intent(getApplicationContext(), HowToUseActivity.class);
+        startActivity(intent);
     }
     private void showSettings(){
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
