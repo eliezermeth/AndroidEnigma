@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidEnigma">
         <activity
+            android:name=".activities.HowToUseActivity"
+            android:label="@string/how_to_use_label"
+            android:theme="@style/Theme.AndroidEnigma.NoActionBar" />
+        <activity
             android:name=".activities.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity

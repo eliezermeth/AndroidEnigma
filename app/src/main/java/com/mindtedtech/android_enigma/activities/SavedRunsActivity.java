@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import com.mindtedtech.android_enigma.R;
 import com.mindtedtech.android_enigma.memory.MessageInfo;
 import com.mindtedtech.enigmamachine.utilities.WiringData;
+
+import org.w3c.dom.Text;
 
 public class SavedRunsActivity extends AppCompatActivity
 {
@@ -31,6 +34,8 @@ public class SavedRunsActivity extends AppCompatActivity
         String text = prepareDataFromPreviousRuns();
         TextView textView = (TextView) findViewById(R.id.saved_runs_textview);
         textView.setText(text);
+
+        textView.setMovementMethod(new ScrollingMovementMethod()); // enable scrolling
     }
 
     private void setupToolbar()
