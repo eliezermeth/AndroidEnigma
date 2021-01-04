@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity
             }
             case R.id.action_how_to_use: {
                 showHowToUse();
+                return true;
             }
             case R.id.action_about: {
                 showAbout();
@@ -151,8 +152,8 @@ public class MainActivity extends AppCompatActivity
 
     }
     private void showHowToUse(){
-        //Intent intent = new Intent(getApplicationContext(), HowToUseActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), HowToUseActivity.class);
+        startActivity(intent);
     }
     private void showSettings(){
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
