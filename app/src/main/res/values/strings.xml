@@ -55,5 +55,5 @@ The reflector connected outputs of the last rotor in pairs, redirecting current 
 
 A cable placed onto the plugboard connected letters in pairs; for example, E and Q might be a steckered pair. The effect was to swap those letters before and after the main rotor scrambling unit. For example, when an operator pressed E, the signal was diverted to Q before entering the rotors. Up to 13 steckered pairs might be used at one time, although only 10 were normally used.
 
-Current flowed from the keyboard through the plugboard, and proceeded to the entry-rotor or Eintrittswalze. Each letter on the plugboard had two jacks. Inserting a plug disconnected the upper jack (from the keyboard) and the lower jack (to the entry-rotor) of that letter. The plug at the other end of the crosswired cable was inserted into another letter's jacks, thus switching the connections of the two letters. </string>
+Current flowed from the keyboard through the plugboard, and proceeded to the entry-rotor or Eintrittswalze. Each letter on the plugboard had two jacks. Inserting a plug disconnected the upper jack (from the keyboard) and the lower jack (to the entry-rotor) of that letter. The plug at the other end of the crosswired cable was inserted into another letter\'s jacks, thus switching the connections of the two letters. </string>
 </resources>
