@@ -66,7 +66,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         private void setNightModePreferenceListener() {
             Preference nightModePreference = findPreference(getString(R.string.night_mode_key));
-            if (nightModePreference == null) {
+            if (nightModePreference != null) {
                 nightModePreference.setOnPreferenceChangeListener((preference, newValue) -> {
                     Boolean newBooleanValue = (Boolean) newValue;
                     Utils.setNightModeOnOrOff(newBooleanValue);
