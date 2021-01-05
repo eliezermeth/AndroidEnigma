@@ -31,4 +31,10 @@
     <style name="Theme.AndroidEnigma.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.AndroidEnigma.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.AndroidEnigma.Menu" parent="Theme.AndroidEnigma.NoActionBar">
+        <item name="android:textColorPrimary">@color/primaryTextColor</item>
+        <item name="actionMenuTextColor">@color/primaryTextColor</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColor</item>
+    </style>
 </resources>
